@@ -14,7 +14,7 @@ by the European Union and ESA; all rights reserved.
 */
 
 ElevationProvider::ElevationProvider(const QString& imageFormat, quint32 averageSize, QGeoMapType::MapStyle mapType, QObject* parent)
-    : MapProvider(QStringLiteral("https://terrain-ce.suite.auterion.com/"), imageFormat, averageSize, mapType, parent) {}
+    : MapProvider(QStringLiteral("https://m.ggss.club/terrain/"), imageFormat, averageSize, mapType, parent) {}
 
 //-----------------------------------------------------------------------------
 int CopernicusElevationProvider::long2tileX(const double lon, const int z) const {
@@ -31,7 +31,7 @@ int CopernicusElevationProvider::lat2tileY(const double lat, const int z) const 
 QString CopernicusElevationProvider::_getURL(const int x, const int y, const int zoom, QNetworkAccessManager* networkManager) {
     Q_UNUSED(networkManager)
     Q_UNUSED(zoom)
-    return QString("https://terrain-ce.suite.auterion.com/api/v1/carpet?points=%1,%2,%3,%4")
+    return QString("https://m.ggss.club/terrain/api/v1/carpet?points=%1,%2,%3,%4")
         .arg(static_cast<double>(y) * TerrainTile::tileSizeDegrees - 90.0)
         .arg(static_cast<double>(x) * TerrainTile::tileSizeDegrees - 180.0)
         .arg(static_cast<double>(y + 1) * TerrainTile::tileSizeDegrees - 90.0)
